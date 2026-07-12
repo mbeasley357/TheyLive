@@ -1,2 +1,2 @@
 # TheyLive
-They Live Moviw Experience
+They Live Movie Experience
