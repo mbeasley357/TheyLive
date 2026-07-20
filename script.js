@@ -27,7 +27,8 @@
   // Paste your Google Form's embed URL here to wire up the subscribe popup.
   // In Google Forms: Send > the "<>" embed icon > copy the iframe "src" value
   // (looks like https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true).
-  const GOOGLE_FORM_EMBED_URL = "";
+  const GOOGLE_FORM_EMBED_URL =
+    "https://docs.google.com/forms/d/e/1FAIpQLSflnt9HBfXGSTaviiEHLNc_61vzMGwi7JGhxd9wJMR98LG7GA/viewform?embedded=true";
 
   const body = document.body;
   const glassesToggle = document.getElementById("glassesToggle");
