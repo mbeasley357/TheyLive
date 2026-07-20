@@ -32,7 +32,7 @@
         <p class="ad-sub">Join 8,400,000+ satisfied citizens already enjoying comfortable compliance.</p>
         <div class="ad-buttons">
           <button class="btn btn-fake" type="button">SHOP NOW</button>
-          <button class="btn btn-fake" type="button">SUBSCRIBE</button>
+          <button class="btn btn-fake" id="subscribeBtn" type="button">SUBSCRIBE</button>
         </div>
       </div>
 
@@ -86,6 +86,18 @@
   </button>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="modal-overlay" id="subscribeModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="subscribeModalTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close">&times;</button>
+      <h2 id="subscribeModalTitle">Thanks for stopping by.</h2>
+      <p class="modal-sub">Sign up to be notified about new art installations and events.</p>
+      <div class="modal-form-wrap">
+        <p class="modal-fallback" id="modalFallback">Sign-up form coming soon.</p>
+        <iframe id="subscribeFrame" class="modal-iframe" title="Subscribe form" loading="lazy" hidden></iframe>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

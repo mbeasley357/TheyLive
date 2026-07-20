@@ -24,6 +24,12 @@
   const TAP_THRESHOLD = 5;
   const STORAGE_KEY = "theylive_counter";
 
+  // Paste your Google Form's embed URL here to wire up the subscribe popup.
+  // In Google Forms: Send > the "<>" embed icon > copy the iframe "src" value
+  // (looks like https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true).
+  const GOOGLE_FORM_EMBED_URL =
+    "https://docs.google.com/forms/d/e/1FAIpQLSflnt9HBfXGSTaviiEHLNc_61vzMGwi7JGhxd9wJMR98LG7GA/viewform?embedded=true";
+
   const body = document.body;
   const glassesToggle = document.getElementById("glassesToggle");
   const commandWordEl = document.getElementById("commandWord");
@@ -35,6 +41,11 @@
   const qrImg = document.getElementById("qrImg");
   const staticBurst = document.querySelector(".static-burst");
   const toast = document.getElementById("toast");
+  const subscribeBtn = document.getElementById("subscribeBtn");
+  const subscribeModal = document.getElementById("subscribeModal");
+  const modalClose = document.getElementById("modalClose");
+  const subscribeFrame = document.getElementById("subscribeFrame");
+  const modalFallback = document.getElementById("modalFallback");
 
   let lastWord = null;
   let autoTimer = null;
@@ -194,6 +205,43 @@
   glassesToggle.addEventListener("click", () => {
     const isOn = glassesToggle.getAttribute("aria-pressed") === "true";
     setGlasses(!isOn);
+  });
+
+  // ---------------- Subscribe modal ----------------
+
+  function openSubscribeModal() {
+    if (GOOGLE_FORM_EMBED_URL) {
+      modalFallback.hidden = true;
+      subscribeFrame.hidden = false;
+      if (!subscribeFrame.src) subscribeFrame.src = GOOGLE_FORM_EMBED_URL;
+    } else {
+      modalFallback.hidden = false;
+      subscribeFrame.hidden = true;
+    }
+    subscribeModal.classList.add("open");
+    subscribeModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    modalClose.focus();
+  }
+
+  function closeSubscribeModal() {
+    subscribeModal.classList.remove("open");
+    subscribeModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    subscribeBtn.focus();
+  }
+
+  subscribeBtn.addEventListener("click", openSubscribeModal);
+  modalClose.addEventListener("click", closeSubscribeModal);
+
+  subscribeModal.addEventListener("click", (e) => {
+    if (e.target === subscribeModal) closeSubscribeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && subscribeModal.classList.contains("open")) {
+      closeSubscribeModal();
+    }
   });
 
   // ---------------- Share ----------------
