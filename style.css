@@ -1,0 +1,421 @@
+/* ============================================================
+   THEY LIVE // COMMAND — stylesheet
+   Two realities: the colorful "ad" surface, and the stark
+   black-and-white "glasses" truth underneath it.
+   ============================================================ */
+
+:root {
+  --neon-pink: #ff2d95;
+  --neon-cyan: #00e5ff;
+  --neon-purple: #7b2ff7;
+  --neon-yellow: #ffe600;
+  --ink: #0a0a0a;
+  --paper: #f5f5f5;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: var(--ink);
+  color: var(--paper);
+  overflow-x: hidden;
+  transition: background 0.4s ease;
+}
+
+.stage {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.screen {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+}
+
+/* ---------------- AD MODE (default reality) ---------------- */
+
+body.mode-ad .ad-screen {
+  display: flex;
+}
+
+.ad-screen {
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink) 45%, var(--neon-yellow));
+  color: var(--ink);
+  padding: 1.5rem 1.5rem 8rem;
+}
+
+.ad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.ad-logo {
+  font-weight: 900;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+}
+
+.ad-nav {
+  display: flex;
+  gap: 1.25rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+.ad-hero {
+  max-width: 760px;
+  margin: 2rem auto 3rem;
+  text-align: center;
+}
+
+.ad-eyebrow {
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  background: var(--ink);
+  color: var(--neon-yellow);
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+}
+
+.ad-headline {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.05;
+  font-weight: 900;
+  margin: 1rem 0;
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.4);
+}
+
+.ad-sub {
+  font-size: 1.05rem;
+  font-weight: 600;
+  opacity: 0.85;
+  max-width: 520px;
+  margin: 0 auto 1.75rem;
+}
+
+.ad-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.75rem;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active { transform: scale(0.96); }
+
+.btn-fake {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.25);
+}
+
+.btn-fake:hover { box-shadow: 0 3px 0 rgba(0,0,0,0.25); transform: translateY(3px); }
+
+.ad-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ad-card {
+  background: rgba(255,255,255,0.65);
+  border-radius: 14px;
+  padding: 1.25rem;
+  backdrop-filter: blur(2px);
+}
+
+.ad-card-title {
+  font-weight: 800;
+  margin: 0 0 0.35rem;
+}
+
+.ad-card-text {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ---------------- GLASSES MODE (the truth) ---------------- */
+
+body.mode-glasses .glasses-screen {
+  display: flex;
+}
+
+.glasses-screen {
+  background: #000;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1.5rem 8rem;
+  filter: grayscale(1) contrast(1.3);
+}
+
+.kicker {
+  letter-spacing: 0.35em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.6;
+  margin: 0 0 1rem;
+}
+
+.command-word {
+  font-size: clamp(2.75rem, 12vw, 7rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin: 0 0 1rem;
+  font-family: "Impact", "Arial Black", Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+.command-word.flicker {
+  animation: flicker 0.35s steps(2, jump-none) 2;
+}
+
+@keyframes flicker {
+  0%   { opacity: 1; }
+  20%  { opacity: 0.15; }
+  40%  { opacity: 1; }
+  60%  { opacity: 0.25; }
+  80%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.hint {
+  opacity: 0.55;
+  font-size: 0.85rem;
+  margin: 0 0 2rem;
+}
+
+.controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.btn-glasses {
+  background: #fff;
+  color: #000;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.btn-outline[aria-pressed="true"] {
+  background: #fff;
+  color: #000;
+}
+
+.counter {
+  opacity: 0.7;
+  font-size: 0.85rem;
+  margin-bottom: 2.5rem;
+}
+
+.secondary-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.secondary-links a,
+.link-btn {
+  color: #fff;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  opacity: 0.75;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.secondary-links a:hover,
+.link-btn:hover {
+  opacity: 1;
+}
+
+.qr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qr-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  opacity: 0.55;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.qr-img {
+  border: 6px solid #fff;
+  background: #fff;
+}
+
+/* ---------------- Glasses toggle (persistent floating control) ---------------- */
+
+.glasses-toggle {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  z-index: 50;
+  background: #000;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  padding: 0.9rem 1.75rem;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.glasses-toggle[aria-pressed="true"] {
+  background: #fff;
+  color: #000;
+}
+
+body.mode-ad .glasses-toggle {
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
+  50% { box-shadow: 0 8px 24px rgba(0,229,255,0.6); }
+}
+
+/* ---------------- CRT scanlines overlay ---------------- */
+
+.scanlines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.18) 0px,
+    rgba(0,0,0,0.18) 1px,
+    transparent 2px,
+    transparent 3px
+  );
+  mix-blend-mode: multiply;
+}
+
+body.mode-glasses .scanlines {
+  opacity: 1;
+}
+
+/* ---------------- Static burst (brief transition flash) ---------------- */
+
+.static-burst {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 2px 2px;
+  mix-blend-mode: screen;
+}
+
+.static-burst.play {
+  animation: static-flash 0.4s steps(1) 3;
+}
+
+@keyframes static-flash {
+  0%   { opacity: 0.9; filter: invert(0); }
+  50%  { opacity: 0.6; filter: invert(1); }
+  100% { opacity: 0; }
+}
+
+/* ---------------- Toast ---------------- */
+
+.toast {
+  position: fixed;
+  bottom: 6.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 70;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ---------------- Reduced motion ---------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .command-word.flicker,
+  .glasses-toggle,
+  .static-burst.play {
+    animation: none !important;
+  }
+}
+
+/* ---------------- Mobile ---------------- */
+
+@media (max-width: 480px) {
+  .ad-nav { display: none; }
+  .controls { flex-direction: column; align-items: stretch; }
+  .secondary-links { flex-direction: column; gap: 0.75rem; }
+  .glasses-toggle { width: calc(100% - 2rem); }
+}

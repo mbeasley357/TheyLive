@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THEY LIVE // COMMAND</title>
+<meta name="description" content="An interactive homage to John Carpenter's They Live. Put on the glasses and see what's really being broadcast.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22black%22/><rect x=%2215%22 y=%2240%22 width=%2270%22 height=%2220%22 fill=%22white%22/></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="mode-ad">
+
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="static-burst" aria-hidden="true"></div>
+
+  <main class="stage">
+
+    <!-- ===== AD MODE (default, colorful, "normal reality") ===== -->
+    <section class="screen ad-screen" aria-hidden="false">
+      <header class="ad-header">
+        <span class="ad-logo">CONSUMPTION™</span>
+        <nav class="ad-nav">
+          <span>NEW ARRIVALS</span>
+          <span>DEALS</span>
+          <span>ACCOUNT</span>
+        </nav>
+      </header>
+
+      <div class="ad-hero">
+        <p class="ad-eyebrow">LIMITED TIME OFFER</p>
+        <h1 class="ad-headline">Everything You Want.<br>Nothing You Need.</h1>
+        <p class="ad-sub">Join 8,400,000+ satisfied citizens already enjoying comfortable compliance.</p>
+        <div class="ad-buttons">
+          <button class="btn btn-fake" type="button">SHOP NOW</button>
+          <button class="btn btn-fake" type="button">SUBSCRIBE</button>
+        </div>
+      </div>
+
+      <div class="ad-grid">
+        <div class="ad-card">
+          <p class="ad-card-title">New Season</p>
+          <p class="ad-card-text">Refresh your look. Refresh your outlook.</p>
+        </div>
+        <div class="ad-card">
+          <p class="ad-card-title">Family Plans</p>
+          <p class="ad-card-text">Everyone's doing it. Shouldn't you?</p>
+        </div>
+        <div class="ad-card">
+          <p class="ad-card-title">Prime Time</p>
+          <p class="ad-card-text">98 channels. Never miss a moment.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GLASSES MODE (hidden truth) ===== -->
+    <section class="screen glasses-screen" aria-hidden="true">
+      <p class="kicker">THEY LIVE COMMAND</p>
+
+      <h1 class="command-word" id="commandWord">OBEY</h1>
+
+      <p class="hint">(Tap "Reveal Another" for another message)</p>
+
+      <div class="controls">
+        <button class="btn btn-glasses" id="revealBtn" type="button">Reveal Another</button>
+        <button class="btn btn-outline" id="autoBtn" type="button" aria-pressed="false">Auto-Cycle: Off</button>
+        <button class="btn btn-outline" id="soundBtn" type="button" aria-pressed="false">🔇 Sound: Off</button>
+      </div>
+
+      <p class="counter">Commands revealed: <span id="counter">0</span></p>
+
+      <div class="secondary-links">
+        <a href="https://en.wikipedia.org/wiki/They_Live" target="_blank" rel="noopener noreferrer">Learn more about They Live ↗</a>
+        <button class="link-btn" id="shareBtn" type="button">Share this page</button>
+      </div>
+
+      <div class="qr-wrap">
+        <p class="qr-label">Scan to share the broadcast</p>
+        <img id="qrImg" class="qr-img" alt="QR code linking to this page" width="140" height="140">
+      </div>
+    </section>
+
+  </main>
+
+  <button class="glasses-toggle" id="glassesToggle" type="button" aria-pressed="false">
+    <span class="glasses-toggle-text">🕶️ PUT ON THE GLASSES</span>
+  </button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
