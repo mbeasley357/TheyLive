@@ -98,14 +98,14 @@
     const rapid = setInterval(() => {
       commandWordEl.textContent = WORDS[Math.floor(Math.random() * WORDS.length)];
       i++;
-      if (i > 12) {
+      if (i > 4) {
         clearInterval(rapid);
         commandWordEl.textContent = "THEY LIVE";
         showToast("You can see them now.");
         if (soundOn) playStatic(0.35);
         setTimeout(() => revealWord({ silent: true }), 1800);
       }
-    }, 90);
+    }, AUTO_CYCLE_MS);
     triggerStaticBurst();
   }
 
