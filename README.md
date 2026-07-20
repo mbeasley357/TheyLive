@@ -25,6 +25,27 @@ as an original interactive page.
 - A live **QR code** on the glasses screen always points at whatever URL the page is
   currently served from (via api.qrserver.com), so it works automatically once deployed.
 - A **Learn more about They Live** link goes to the film's Wikipedia page.
+- **SUBSCRIBE** opens a popup thanking the visitor and embedding a sign-up form (email
+  capture for future art installation / event announcements) — see "Setting up the
+  subscribe form" below.
+
+## Setting up the subscribe form
+
+The site is static with no backend, so the SUBSCRIBE popup embeds a Google Form to
+actually collect email addresses:
+
+1. Create a new form at [forms.google.com](https://forms.google.com) with a **Name**
+   (optional) and an **Email address** question (mark it required; under the question's
+   "..." menu choose "Response validation" to require email format).
+2. Under **Responses**, click the green Sheets icon to link responses to a Google Sheet
+   so you can see/export signups as they come in.
+3. Click **Send**, choose the **`<>`** (embed) tab, and copy the `src` value from the
+   `<iframe>` snippet — it looks like
+   `https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true`.
+4. Paste that URL into `GOOGLE_FORM_EMBED_URL` near the top of `script.js`.
+
+Until that URL is filled in, the popup shows a "Sign-up form coming soon" placeholder
+instead of a broken embed.
 
 ## Files
 
