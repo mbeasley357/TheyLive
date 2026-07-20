@@ -152,7 +152,6 @@ body.mode-ad .ad-screen {
   background: rgba(255,255,255,0.65);
   border-radius: 14px;
   padding: 1.25rem;
-  backdrop-filter: blur(2px);
 }
 
 .ad-card-title {
@@ -344,7 +343,6 @@ body.mode-ad .glasses-toggle {
     transparent 2px,
     transparent 3px
   );
-  mix-blend-mode: multiply;
 }
 
 body.mode-glasses .scanlines {
@@ -364,7 +362,6 @@ body.mode-glasses .scanlines {
     radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px);
   background-size: 3px 3px, 5px 5px;
   background-position: 0 0, 2px 2px;
-  mix-blend-mode: screen;
 }
 
 .static-burst.play {
