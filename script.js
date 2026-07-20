@@ -75,7 +75,7 @@
     void commandWordEl.offsetWidth;
     commandWordEl.classList.add("flicker");
     bumpCounter();
-    if (!silent && soundOn) playStatic(0.12);
+    if (!silent && soundOn) playStatic(0.5);
   }
 
   revealBtn.addEventListener("click", () => revealWord());
@@ -98,14 +98,14 @@
     const rapid = setInterval(() => {
       commandWordEl.textContent = WORDS[Math.floor(Math.random() * WORDS.length)];
       i++;
-      if (i > 12) {
+      if (i > 4) {
         clearInterval(rapid);
         commandWordEl.textContent = "THEY LIVE";
         showToast("You can see them now.");
-        if (soundOn) playStatic(0.35);
+        if (soundOn) playStatic(0.6);
         setTimeout(() => revealWord({ silent: true }), 1800);
       }
-    }, 90);
+    }, AUTO_CYCLE_MS);
     triggerStaticBurst();
   }
 
@@ -133,7 +133,7 @@
     return audioCtx;
   }
 
-  function playStatic(duration = 0.15) {
+  function playStatic(duration = 0.5) {
     const ctx = ensureAudio();
     if (!ctx) return;
     if (ctx.state === "suspended") ctx.resume();
@@ -161,7 +161,7 @@
     soundBtn.textContent = soundOn ? "🔊 Sound: On" : "🔇 Sound: Off";
     if (soundOn) {
       ensureAudio();
-      playStatic(0.15);
+      playStatic(0.5);
     }
   });
 
@@ -181,7 +181,7 @@
       ? "🕶️ TAKE OFF THE GLASSES"
       : "🕶️ PUT ON THE GLASSES";
     triggerStaticBurst();
-    if (soundOn) playStatic(0.25);
+    if (soundOn) playStatic(0.5);
 
     if (on) {
       revealWord({ silent: true });
